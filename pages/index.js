@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LoadingText,Background,Mbti_Layout,StartLogo,StartPageLayout,StartButton,StartLogo_Mbti,StartLogo_motion,AnswerItemLayout,MbtiTitle,MbtiTitle1,QuestionItemLayout,QuestionLayout,QuestionList,ChatBox,ChatListLayout,ProfileImg,ProfileImg1,ProfileImg2, AchatBox, AnswerBox, StartLogo_1, StartLogo_motion_Wrapper, StartLogo_motion_spacebar, ChatBox_Btn, StartLogo_space, ChatBox_1, ProgressBar, Progress, QnaWrapper, ProgressWrapper, UniverLogo, Pen, StartBoard, Eraserbg, Eraser} from "../styles/mbti_css";
+import { LoadingText,Background,Mbti_Layout,StartLogo,StartPageLayout,StartButton,StartLogo_Mbti,StartLogo_motion,AnswerItemLayout,MbtiTitle,MbtiTitle1,QuestionItemLayout,QuestionLayout,QuestionList,ChatBox,ChatListLayout,ProfileImg,ProfileImg1,ProfileImg2, AchatBox, AnswerBox, StartLogo_1, StartLogo_motion_Wrapper, StartLogo_motion_spacebar, ChatBox_Btn, StartLogo_space, ChatBox_1, ProgressBar, Progress, QnaWrapper, ProgressWrapper, UniverLogo, Pen, StartBoard, Eraserbg, Eraser, Imagelogo, ImageLogo} from "../styles/mbti_css";
 import ConfettiExplosion from "react-confetti-explosion";
 import theme from "../styles/theme";
 import spinner from '../public/spinner/spinner.gif'
@@ -267,11 +267,11 @@ export default function App() {
                     <StartLogo_motion>?</StartLogo_motion>
                     </StartLogo_motion_Wrapper>
                 </StartLogo>
+                <ImageLogo src="./spinner/a.png" alt="Logo" />
                 <StartButton onClick={()=> setPage(1)}> 시작하기 </StartButton>
                 <StartBoard>
                     <Pen></Pen>
                     <Eraser>가온누리<Eraserbg></Eraserbg></Eraser>
-                    
                 </StartBoard>
             </StartPageLayout>
 
@@ -327,11 +327,15 @@ export default function App() {
                                     {/* 요소만큼 실행되기때문에 a가 2개이므로 2번 실행됨! */}
                                 </AnswerBox>
                                 )}
-
                             </AnswerItemLayout>
                     </QuestionList>
                 )}
+                
                 </QnaWrapper>
+                <StartBoard>
+                    <Pen></Pen>
+                    <Eraser>가온누리<Eraserbg></Eraserbg></Eraser>
+                </StartBoard>
             </QuestionLayout>
             : //더이상 보여줄 pageList.length 가 없기때문에 결과페이지 보여주기!            
             <QuestionLayout>

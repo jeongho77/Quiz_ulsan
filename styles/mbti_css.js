@@ -133,8 +133,8 @@ export const StartLogo_motion_Wrapper = styled.div`
 export const StartLogo_motion = styled.div`
     display: flex;
     flex-direction: row;
-    margin-top : 50px;
-    margin-bottom: 55px;
+    margin-top : 40px;
+    margin-bottom: 15px;
     font-size: 30px;
     position: relative;
     transition: transform 0.3s ease;
@@ -154,7 +154,7 @@ export const StartLogo_motion_spacebar = styled.div`
     left: -9999px; /* 왼쪽으로 화면 밖으로 이동 */
 `
 export const StartButton = styled.button`
-    margin-top: 20px;
+    margin-top: 10px;
     width: 300px;
     height: 100px;
     border-radius: 50px;
@@ -187,11 +187,17 @@ export const StartButton = styled.button`
 export const StartBoard = styled.div`
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     height:100%;
     width:100%;
     align-items: flex-end;
 `
+
+export const ImageLogo = styled.img`
+    width: 100%;
+    height: 30%;
+    object-fit: cover; /* 이 부분은 background-size: cover와 동일한 기능을 합니다. */
+`;
 
 export const Pen = styled.div`
     border: 3px solid white;
@@ -229,7 +235,8 @@ export const Eraserbg = styled.div`
 export const QuestionLayout = styled.div`
     display:flex;
     flex-direction: column;
-    background-color : rgba(47.24, 45.57, 45.57, 1);
+    border: 10px solid rgb(133, 77, 60);
+    background-color: rgb(29,84,63);
     width : 100%;
     max-width: 900px;
     height:100%;
