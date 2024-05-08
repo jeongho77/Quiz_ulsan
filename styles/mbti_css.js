@@ -5,22 +5,46 @@ export const Mbti_Layout = styled.div`
     font-size : 14px;
     display : flex;
     justify-content: center;
-    background-color: white;
+    background-color : honeydew;
     height:calc(var(--vh,1vh)*100);
+    
     //layout의 높이를 다양한 화면기기 뷰포트에 알맞게끔 스타일 설정하기
     //var(변수값1 ,변수값2 ) 변수값 1이없으면 2로 설정하기
 `
+
+export const LoadingText = styled.div`
+    font: 1rem 'Noto Sans KR';
+    text-align: center;
+`
+
+export const Background = styled.div`
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #ffffffb7;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+
 
 export const StartPageLayout = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color : #89AA97;
     width : 100%;
     max-width : 900px;
     height: 100%;
     color : #413730;
+    border: 10px solid rgb(133, 77, 60);
+    padding: 50px;
+    background-color: rgb(29,84,63);
 `
 
 export const StartLogo = styled.div`
@@ -29,6 +53,18 @@ export const StartLogo = styled.div`
     align-items: center;
     font-size: 25px;
     font-weight:700;
+
+`
+
+export const UniverLogo = styled.div`
+    width: 100%;
+    height: 100%;
+    background-image: url("logo.png");
+    background-repeat: no-repeat;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit: cover;
 
 `
 
@@ -98,7 +134,7 @@ export const StartLogo_motion = styled.div`
     flex-direction: row;
     margin-top : 50px;
     margin-bottom: 55px;
-    font-size: 50px;
+    font-size: 30px;
     position: relative;
     transition: transform 0.3s ease;
     color:white;
@@ -150,7 +186,7 @@ export const StartButton = styled.button`
 export const QuestionLayout = styled.div`
     display:flex;
     flex-direction: column;
-    background-color: #89AA97;
+    background-color : rgba(47.24, 45.57, 45.57, 1);
     width : 100%;
     max-width: 900px;
     height:100%;
@@ -180,7 +216,7 @@ export const ProgressWrapper = styled.div`
 `
 
 export const ProgressBar = styled.div`
-    width: 100%;
+    width: 97%;
     height: 100%;
     background-color: #dedede;
     border-radius: 12px;
@@ -196,7 +232,7 @@ export const Progress = styled.div`
     text-align: center;
     background-color: skyblue;
     color: #111;
-    transition: width 0.5s ease; /* 프로그레스 바가 부드럽게 변화하도록 설정합니다. */
+    transition: width 0.1s ease; /* 프로그레스 바가 부드럽게 변화하도록 설정합니다. */
 `;
 
 export const QuestionList = styled.div`
@@ -205,15 +241,13 @@ export const QuestionList = styled.div`
     scrollbar-width : none;
     `
 
-
-
 export const AnswerItemLayout = styled.div`
     width: 100%;
     height:50%;
     margin-top: 3%;
     padding-bottom: 10px;
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
 `
 export const ChatListLayout = styled.div`
     display: flex ; 
@@ -282,7 +316,7 @@ export const ChatBox = styled.div`
         margin-left : -4px;
         border-radius: 10px;
         text-align : left;
-        font-size: 45px;
+        font-size: 30px;
         color:white;
         width: auto;
         position: relative;
@@ -296,7 +330,7 @@ export const ChatBox = styled.div`
         margin-left : -4px;
         border-radius: 10px;
         text-align : left;
-        font-size: 50px;
+        font-size: 30px;
         color:white;
         width: auto;
         position: relative;
@@ -360,7 +394,7 @@ export const AchatBox = styled.div`
     display:flex;
     width : 100%;
     color: #969696;
-    font-size : 22px;
+    font-size : 10px;
     border-bottom : 1px solid #eee;
     margin-bottom : 25px;
 
@@ -384,25 +418,30 @@ export const AnswerBox = styled.div`
     justify-content: center;
     padding: 35px;
     text-align: center;
-    box-shadow : 2px 2px 0px #ededed;
-    border:1px solid #ededed;
+    /* box-shadow : 2px 2px 0px #ededed; */
     margin : 0px 20px 15px 20px;
     border-radius: 15px;
-    font-size : 25px;
-    background-color: #F4E3B7;
+    font-size : 20px;
+    /* background-color: #F4E3B7; */
     position : relative;
+    padding-bottom: 50%;
 
     transition:  opacity 0.6s ease;
 
     :nth-child(1){
+        width: 50%;
         position: relative;
         display: flex;
         animation: shasha 1.2s running ease; // 애니메이션
+        background-color: rgb(177, 49, 39);
     }
     :nth-child(2){
+
+        width:50%;
         position: relative;
         display: flex;
         animation: shasha 1.4s running ease; // 애니메이션
+        background-color: #4B89DC;
     }
 
     :hover {

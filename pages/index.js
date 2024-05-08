@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Mbti_Layout,StartLogo,StartPageLayout,StartButton,StartLogo_Mbti,StartLogo_motion,AnswerItemLayout,MbtiTitle,MbtiTitle1,QuestionItemLayout,QuestionLayout,QuestionList,ChatBox,ChatListLayout,ProfileImg,ProfileImg1,ProfileImg2, AchatBox, AnswerBox, StartLogo_1, StartLogo_motion_Wrapper, StartLogo_motion_spacebar, ChatBox_Btn, StartLogo_space, ChatBox_1, ProgressBar, Progress, QnaWrapper, ProgressWrapper} from "../styles/mbti_css";
+import { LoadingText,Background,Mbti_Layout,StartLogo,StartPageLayout,StartButton,StartLogo_Mbti,StartLogo_motion,AnswerItemLayout,MbtiTitle,MbtiTitle1,QuestionItemLayout,QuestionLayout,QuestionList,ChatBox,ChatListLayout,ProfileImg,ProfileImg1,ProfileImg2, AchatBox, AnswerBox, StartLogo_1, StartLogo_motion_Wrapper, StartLogo_motion_spacebar, ChatBox_Btn, StartLogo_space, ChatBox_1, ProgressBar, Progress, QnaWrapper, ProgressWrapper, UniverLogo} from "../styles/mbti_css";
 import ConfettiExplosion from "react-confetti-explosion";
 import theme from "../styles/theme";
+import spinner from '../public/spinner/spinner.gif'
 
 export default function App() {
     
-   
     const [isExploding, setIsExploding] = useState(true);
     const [translateY, setTranslateY] = useState(0);
     const [page,setPage] = useState(0);
@@ -15,15 +15,50 @@ export default function App() {
 ]);
     const [mbtiContents, setMbtiContents] = useState([]);
     const [ratio, setRatio] = useState(0);
-    const [pageList, setpageList] = useState(15);
+    const [pageList, setpageList] = useState(3);
     const [activeIndex, setActiveIndex] = useState(null);
+    const [loading, setloading] = useState(true);
+    
+
+
     useEffect(() => {
-        const newRatio = (page / pageList) * 100;
-        setRatio(newRatio);
+        //페이지 리스트에 따라 로딩창이 뜨게한다.
+        if(page == pageList){ 
+            setloading(true);
+            setTimeout(() => {
+                setloading(false);
+            },2000); //2초후에 꺼주기
+        }
+
+        if(loading == true){
+            setTimeout(() => {
+                setloading(false);
+            },2000);
+        }
+
+        setRatio(0);
+        const Timer = 0; // Timer 변수 선언
+
+        const interval = setInterval(() => {
+            if (Timer < 10) { // Timer가 10 미만인 동안에만 실행
+                setRatio(ratio => ratio + 0.2); // ratio를 10씩 증가
+            }
+
+            if (Timer == 10) {
+
+            }
+
+        }, 100); // 1초마다 실행
+        console.log("페이지: ",page);
+        console.log("페이지리스트: ",pageList);
+        if(page == pageList-1){
+            setRatio(100);
+        }
+        
+
     }, [page, pageList]);
 
     const setVh = () => {
-        
         const vh = window.innerHeight * 0.01; 
         //현재 viewport 파악후 1/100 하기
         document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -31,72 +66,17 @@ export default function App() {
     }
         useEffect(()=> {  //useEffect는 화면이 렌더링되는 순간 실행
             setVh() //화면이 켜지는순간 함수실행 height 스타일 변경
-
             function onResize() { //렌더링이 아니여도 창크기 변경시 대응하기 위한 함수생성
                 setVh() 
             }
-
             window.addEventListener('resize' , onResize) 
             //브라우저 창크기가 변경될때마다 호출되는 함수
-
         } , [])
 
     const questionList = [ //질문들
         {q:['(동아리방에 도착했는데 아무도 없다.)'],
-        a:[{type:'I' , text:'아싸! 좀 편하게 쉬어야겠다. (오예!)'},
-           {type:'E', text:'어쩔 수 없지 뭐.. (다른사람 만나러가야지!)'}]},
-        
-        {q:['이번에 프로젝트 하나 할래!?!!?','진짜 좋은 프로젝트있어!!!'],
-        a:[{type:'E',text:'응 나 프로젝트 끝났는데 하나 같이할까??!!!!'},
-           {type:'I',text:'나 이제 프로젝트 끝났는데... 너무 힘들어서 쉴래... 에너지 없어'},]},
-
-        {q:['(처음보는 사람이 아는척을 한다)' , '안녕!'],
-        a:[{type:'E',text:'안녕하세요!!'},
-           {type:'I',text:'(왜 말걸지..?) ?안녕'},]},
-
-        {q:['(동아리방에 후배랑 얘기하던 도중)' , '괜찮으니깐 말 편하게 하세요!!'],
-        a:[{type:'E',text:'그래! 아까 그래서 ~~#@!#!'},
-           {type:'I',text:'(헐.. 말 꼭 놓아야하나?? 놓으라니 더 못놓겠어 ㅠㅠ)'},]},
-
-        {q:['(동아리에 신입 부원이 왔다)' , '안녕하세요!! 잘부탁드려요!'],
-        a:[{type:'E',text:'헐~~ 완전 귀여워~ 나는 000이라 해 잘부탁해~'},
-           {type:'I',text:'(신입부원 왔네.. 나도 저럴때가 있었는데 반갑네 ㅎ-ㅎ 안녕!!) 넵'},]},   
-
-        {q:['넌 엄마가 좋아?? 아빠가 좋아???'],
-        a:[{type:'S',text:'왜 그런 질문을 하는거야?'}
-          ,{type:'N',text:'음.... 엄마도 좋고 아빠도 좋은데 ㅠㅠ 선택하기 힘들어'}]},
-
-        {q:['사과하면 뭐가 떠올라?'],
-        a:[{type:'N',text:'애플? 맥북? 아이폰? 스위프트? IOS는 개발하기 힘들지않나..?'},
-           {type:'S',text:'빨갛고 맛있지'},]},
-        
-        {q:['오늘 가온누리 개총있대!!!', '가서 뭐 먹을거야?'],
-        a:[{type:'S',text:'음. 술먹지 않을까?'},
-           {type:'N',text:'헐 안주 뭐있지???? 개총 어디서해?????!'}]},
-
-        {q:['나 요즘 너무 우울해서','힘드네.. IT가 맞는걸까?'],
-        a:[{type:'T',text:'여행?? 생각한곳 있어? 일찌감치 전과도 괜찮지'},
-           {type:'F',text:'무슨 일 있어? 동방에서 얘기좀 할래? 타로라도 봐줄까?'}]},
-           
-        {q:['힘든 프로젝트를 넷이서 나누면 어떻게될까?'],
-        a:[{type:'F',text:'할일이 4등분 되서 빨리하지 않을까!?!?'},
-           {type:'T',text:'힘든 사람이 넷이 되겠지'}]},
-           
-        {q:['나 가온누리 면접에서 떨어졌어...ㅠㅠ'],
-        a:[{type:'F',text:'많이 속상하겠다ㅠㅠ... 술이라도 하러갈까..?'},
-           {type:'T',text:'면접을 어떻게 봤는데? 대답은 잘했고?'}]},
-       
-        {q:['(가온누리 부원들을 만났다)','이번에 도란도란 스터디 어떻게 진행할거야?'],
-        a:[{type:'J',text:'음 3,4명으로 조를 짜고있는데 조는 이렇게 나올거같아!'},
-           {type:'P',text:'음 잘 모르겠네 마음 맞는사람들끼리 알아서 할까~'}]},
-              
-        {q:['가온누리 MT 일정 짰어?'],
-        a:[{type:'J',text:'7시30분 만남, 8시 짐풀면서 세팅, 9시 커피 한잔 후 프로젝트, 11시 프로젝트, 12시엔 ~#!@#!@#'},
-           {type:'P',text:'음 귀찮은데 일단 가서 생각할까~!?'}]},
-          
-        {q:['(2주 뒤에 학교 시험입니다.)' ,'(동방에 들어왔더니 다들 공부를 하고있다)' ],
-        a:[{type:'J',text:'(시험이 2주밖에 안남았네. 나도 공부해야지! 이틀에 한과목씩은 끝내놔야겠다.)'},
-           {type:'P',text:'술 마시러갈사람~~~ 선착순 3명!!!'}]},
+        a:[{type:'I' , text:'O'},
+           {type:'E', text:'X'}]},
 
         {q:['(고생했어! 결과를 알려줄게!)' ],
         a:[{type:'',text:'결과 보러가기!'},
@@ -126,9 +106,6 @@ export default function App() {
         //idx는 0부터 시작하고 객체는 1부터 시작함 페이지와 질문의 수를 맞춰야함으로 idx+1 해주기
         }, 10);
 
-        
-        
-        
     }
 
 
@@ -211,15 +188,23 @@ export default function App() {
 
 
     return (
+        
         <Mbti_Layout>    
+            {loading ? (
+            <Background>
+                <LoadingText>잠시만 기다려 주세요.</LoadingText>
+                <img src='./spinner/spinner.gif' alt="로딩 중" width="50%" />
+            </Background>
+            ) : (
+                <>
             {page===0? 
             //삼항연산자를 사용하여 0일때 StartPageLayout까지 보여줌
             //버튼이 눌려질때까지 0페이지를 보여주고 1이 넘어가면 다음페이지를 보여줌!
             //삼항연산자를 이렇게도 사용할수 있다.
-           
+            
             <StartPageLayout>
                 <StartLogo>
-                    <StartLogo_Mbti>MBTI 테스트</StartLogo_Mbti>
+                    <StartLogo_Mbti>O-X 퀴즈</StartLogo_Mbti>
                     <StartLogo_1>▼</StartLogo_1>
                     <StartLogo_motion_Wrapper>
                     <StartLogo_motion>당</StartLogo_motion>
@@ -252,7 +237,7 @@ export default function App() {
 
             <QuestionLayout>
                 <MbtiTitle>
-                    <MbtiTitle1>MBTI 테스트</MbtiTitle1>
+                    <MbtiTitle1>OX 퀴즈</MbtiTitle1>
                     <div>{`${page} / ${questionList.length}`}</div> 
                     {/* 현재 페이지 / 전체 페이지 */}
                     
@@ -309,7 +294,7 @@ export default function App() {
             : //더이상 보여줄 pageList.length 가 없기때문에 결과페이지 보여주기!            
             <QuestionLayout>
                 <MbtiTitle>
-                    <MbtiTitle1>MBTI 테스트</MbtiTitle1>
+                    <MbtiTitle1>O-X 퀴즈</MbtiTitle1>
                     <div onClick={() => window.location.reload()}>다시하기</div> 
                     {/* 현재 페이지 / 전체 페이지 */}
                 </MbtiTitle> 
@@ -332,7 +317,8 @@ export default function App() {
                             </ChatListLayout>
                     </QuestionList>
             </QuestionLayout>
-}
+        }
+        </> )}           
         </Mbti_Layout>
     
     );
