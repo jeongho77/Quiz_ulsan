@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LoadingText,Background,Mbti_Layout,StartLogo,StartPageLayout,StartButton,StartLogo_Mbti,StartLogo_motion,AnswerItemLayout,MbtiTitle,MbtiTitle1,QuestionItemLayout,QuestionLayout,QuestionList,ChatBox,ChatListLayout,ProfileImg,ProfileImg1,ProfileImg2, AchatBox, AnswerBox, StartLogo_1, StartLogo_motion_Wrapper, StartLogo_motion_spacebar, ChatBox_Btn, StartLogo_space, ChatBox_1, ProgressBar, Progress, QnaWrapper, ProgressWrapper, UniverLogo} from "../styles/mbti_css";
+import { LoadingText,Background,Mbti_Layout,StartLogo,StartPageLayout,StartButton,StartLogo_Mbti,StartLogo_motion,AnswerItemLayout,MbtiTitle,MbtiTitle1,QuestionItemLayout,QuestionLayout,QuestionList,ChatBox,ChatListLayout,ProfileImg,ProfileImg1,ProfileImg2, AchatBox, AnswerBox, StartLogo_1, StartLogo_motion_Wrapper, StartLogo_motion_spacebar, ChatBox_Btn, StartLogo_space, ChatBox_1, ProgressBar, Progress, QnaWrapper, ProgressWrapper, UniverLogo, Pen, StartBoard, Eraserbg, Eraser} from "../styles/mbti_css";
 import ConfettiExplosion from "react-confetti-explosion";
 import theme from "../styles/theme";
 import spinner from '../public/spinner/spinner.gif'
@@ -18,8 +18,14 @@ export default function App() {
     const [pageList, setpageList] = useState(3);
     const [activeIndex, setActiveIndex] = useState(null);
     const [loading, setloading] = useState(true);
-    
+    const [Timer, setTimer] = useState(0);
 
+    
+    // useEffect(() => {
+    //     if(ratio > 100){
+    //         setPage[page+1];
+    //     }
+    // }, [ratio]);
 
     useEffect(() => {
         //페이지 리스트에 따라 로딩창이 뜨게한다.
@@ -37,26 +43,56 @@ export default function App() {
         }
 
         setRatio(0);
-        const Timer = 0; // Timer 변수 선언
+        
+        // setTimeout(() => {
+        //     setInterval(() => {
+        //         // 이곳에 실행할 코드 작성
+        //     }, 1000); // 1초마다 실행
+        // }, 5000); // 5초 후에 시작
 
-        const interval = setInterval(() => {
-            if (Timer < 10) { // Timer가 10 미만인 동안에만 실행
-                setRatio(ratio => ratio + 0.2); // ratio를 10씩 증가
+        // console.log("페이지: ",page);
+        // console.log("페이지리스트: ",pageList);
+
+        if(pageList != page && page != 0){
+            if(pageList != page+1){
+            // console.log("작동");
+                let a = 0;
+                let trigger = 0;
+                const interval = setInterval(() => {
+                    trigger = page;
+                    console.log("trigger:", trigger);
+                    console.log("page : " , page);
+                    if (page == trigger){
+                        a = a + 1;
+                         // Timer가 10 미만인 동안에만 실행
+                        //비동기적이라 콘솔이 출력이 안되는거같음.
+                        // 0.2 , 50초 걸림
+                        setRatio(ratio => ratio + 0.3); 
+                        console.log(a)
+                        if(a > 350){
+                            setPage(page+1);
+                            a = 0;
+                            clearInterval(interval);
+                        }
+                    }else{
+                        clearInterval(interval);
+                    }
+
+                    
+                // if (Timer == 10) {
+                //     setPage(page+1);
+                // }
+                }, 100); // 1초마다 실행
             }
+        }
 
-            if (Timer == 10) {
-
-            }
-
-        }, 100); // 1초마다 실행
-        console.log("페이지: ",page);
-        console.log("페이지리스트: ",pageList);
+        
         if(page == pageList-1){
             setRatio(100);
         }
         
 
-    }, [page, pageList]);
+    }, [page, pageList] );
 
     const setVh = () => {
         const vh = window.innerHeight * 0.01; 
@@ -103,6 +139,7 @@ export default function App() {
             setActiveIndex(null);
             setMbtiList(ls); //추가된 ls를 setmbti로 업데이트시키기
             setPage(page+1); //버튼이 클릭될때마다 페이지를 넘기는 로직! 
+            
         //idx는 0부터 시작하고 객체는 1부터 시작함 페이지와 질문의 수를 맞춰야함으로 idx+1 해주기
         }, 10);
 
@@ -231,6 +268,11 @@ export default function App() {
                     </StartLogo_motion_Wrapper>
                 </StartLogo>
                 <StartButton onClick={()=> setPage(1)}> 시작하기 </StartButton>
+                <StartBoard>
+                    <Pen></Pen>
+                    <Eraser>가온누리<Eraserbg></Eraserbg></Eraser>
+                    
+                </StartBoard>
             </StartPageLayout>
 
             :page <= questionList.length? //페이지수보다 퀘스트리스트의 변수가 많다면 실행 즉, 페이지수에 객체수가 부족하면 끝!

@@ -23,6 +23,7 @@ export const Background = styled.div`
     height: 100vh;
     top: 0;
     left: 0;
+    
     background: #ffffffb7;
     z-index: 999;
     display: flex;
@@ -42,8 +43,8 @@ export const StartPageLayout = styled.div`
     max-width : 900px;
     height: 100%;
     color : #413730;
+    padding: 50px 50px 0px 50px;
     border: 10px solid rgb(133, 77, 60);
-    padding: 50px;
     background-color: rgb(29,84,63);
 `
 
@@ -182,6 +183,48 @@ export const StartButton = styled.button`
         background-color: white;
     }
 `
+
+export const StartBoard = styled.div`
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:100%;
+    width:100%;
+    align-items: flex-end;
+`
+
+export const Pen = styled.div`
+    border: 3px solid white;
+    position: relative;
+    width:50px;
+    height:1px;
+`
+
+export const Eraser = styled.div`
+    background-color: navy;
+    width: 110px;
+    height: 50px;
+    position: relative;
+    border: 3px solid #000;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+    color:white;
+`
+export const Eraserbg = styled.div`
+    background-color: darkorange;
+    width: 110px;
+    height: 20px;
+    position: relative;
+    left: -3px;
+    border: 3px solid #000;
+    border-radius: 0px 0px 10px 10px;
+    font-size: 20px;
+    text-align: left;
+
+`
+
+
 
 export const QuestionLayout = styled.div`
     display:flex;
