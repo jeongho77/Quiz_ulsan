@@ -13,8 +13,9 @@ export const Mbti_Layout = styled.div`
 `
 
 export const LoadingText = styled.div`
-    font: 1rem 'Noto Sans KR';
     text-align: center;
+    font-size : 30px;
+    color: white;
 `
 
 export const Background = styled.div`
@@ -24,7 +25,7 @@ export const Background = styled.div`
     top: 0;
     left: 0;
     
-    background: #ffffffb7;
+    background: skyblue;
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -133,8 +134,8 @@ export const StartLogo_motion_Wrapper = styled.div`
 export const StartLogo_motion = styled.div`
     display: flex;
     flex-direction: row;
-    margin-top : 40px;
-    margin-bottom: 15px;
+    margin-top : 20px;
+    margin-bottom: 25px;
     font-size: 30px;
     position: relative;
     transition: transform 0.3s ease;
@@ -331,7 +332,7 @@ export const ChatBox_1 = styled.div`
     color: white;
     font-size : 50px;
     margin-top: 8px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     display: flex;
     position: relative;
     animation: shasha 0.4s running ease; // 애니메이션
