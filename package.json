@@ -1,14 +1,15 @@
 {
-  "name": "mbti",
+  "name": "quiz",
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "homepage": "https://jeongho77.github.io/MBTI-TEST/mbti/",
+  "homepage": "https://jeongho77.github.io/Quiz_ulsan/quiz/",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "build": "next build && next export",
+    "lint": "next lint",
+    "deploy": "npm run build && echo. > out/.nojekyll"
   },
   "dependencies": {
     "@apollo/client": "^3.9.6",
@@ -18,11 +19,10 @@
     "antd": "^5.15.1",
     "axios": "^1.6.7",
     "graphql": "^16.8.1",
-    "next": "14.2.3",
-    "react": "^18",
+    "next": "12.1.0",
+    "react": "^18.2.0",
     "react-confetti-explosion": "^2.1.2",
-    "react-dom": "^18",
-    "react-loader-spinner": "^6.1.6",
+    "react-dom": "^18.2.0",
     "react-native-progress": "^5.0.1"
   },
   "devDependencies": {
