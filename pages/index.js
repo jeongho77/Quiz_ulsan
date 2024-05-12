@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { LoadingText,Background,Mbti_Layout,StartLogo,StartPageLayout,StartButton,StartLogo_Mbti,StartLogo_motion,AnswerItemLayout,MbtiTitle,MbtiTitle1,QuestionItemLayout,QuestionLayout,QuestionList,ChatBox,ChatListLayout,ProfileImg,ProfileImg1,ProfileImg2, AchatBox, AnswerBox, StartLogo_1, StartLogo_motion_Wrapper, StartLogo_motion_spacebar, ChatBox_Btn, StartLogo_space, ChatBox_1, ProgressBar, Progress, QnaWrapper, ProgressWrapper, UniverLogo, Pen, StartBoard, Eraserbg, Eraser, Imagelogo, ImageLogo} from "../styles/mbti_css";
+import { LoadingText,Background,Mbti_Layout,StartLogo,StartPageLayout,StartButton,StartLogo_Mbti,StartLogo_motion,AnswerItemLayout,MbtiTitle,MbtiTitle1,QuestionItemLayout,QuestionLayout,QuestionList,ChatBox,ChatListLayout,ProfileImg,ProfileImg1,ProfileImg2, AchatBox, AnswerBox, StartLogo_1, StartLogo_motion_Wrapper, StartLogo_motion_spacebar, ChatBox_Btn, StartLogo_space, ChatBox_1, ProgressBar, Progress, QnaWrapper, ProgressWrapper, UniverLogo, Pen, StartBoard, Eraserbg, Eraser, Imagelogo, ImageLogo, ImageLogo1, Ballon, Speech} from "../styles/mbti_css";
 import ConfettiExplosion from "react-confetti-explosion";
 import theme from "../styles/theme";
 import spinner from '../public/spinner/spinner.gif'
@@ -308,12 +308,20 @@ export default function App() {
                             <ChatListLayout>
                                         {isExploding && (<ConfettiExplosion />)}
                                         {isExploding && (<ConfettiExplosion />)}
-                                    <ChatBox>
+
+                                   
+                                    <Ballon>
+                                        
                                         <div>당신의 점수는 {score}점 입니다!</div> 
-                                    </ChatBox>
-                                    <ChatBox>
-                                        <div>상심하지 마요!</div> 
-                                    </ChatBox>
+                                        
+                                    </Ballon>
+                                    <Speech></Speech>
+                                    <ImageLogo1 height= "100%" src="./spinner/gaonlogo.png" alt="Logo">
+
+                                    </ImageLogo1>
+
+                                    
+                                    
                                     {mbtiContents.contents && mbtiContents.contents.map((val,idx)=> 
                                         <ChatBox key={idx}> 
                                             <div>{val}</div> 
@@ -324,6 +332,7 @@ export default function App() {
             </QuestionLayout>
         }
         </> )}           
+        
         </Mbti_Layout>
     
     );

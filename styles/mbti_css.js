@@ -192,12 +192,21 @@ export const StartBoard = styled.div`
     height:100%;
     width:100%;
     align-items: flex-end;
+    
 `
 
 export const ImageLogo = styled.img`
     width: 100%;
     height: 30%;
     object-fit: cover; /* 이 부분은 background-size: cover와 동일한 기능을 합니다. */
+`;
+
+export const ImageLogo1 = styled.img`
+    width: 80%;
+    height: 80%;
+    object-fit: cover; /* 이 부분은 background-size: cover와 동일한 기능을 합니다. */
+    margin-top: 26px;
+    animation: shasha 0.5s running ease;
 `;
 
 export const Pen = styled.div`
@@ -462,6 +471,59 @@ export const AchatBox = styled.div`
    
     
 `
+
+export const Ballon = styled.div`
+    
+    width: auto;
+    height: 60px;
+    
+    /* left: 448px;
+    bottom: 62px; */
+    background: white;
+    color: rgb(75,137,220);
+    border-radius: 5px;
+    padding: 12px 12.8px;
+    font-size: 30px;
+
+    animation: shasha 1.5s running ease;
+
+    :after {
+        border-top: 10px solid #484848;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 0px solid transparent;
+        content: "";
+        position: absolute;
+        top: 40px;
+        left: 160px;
+    }
+` 
+
+export const Speech = styled.div`
+	position: relative;
+	background: #ffffff;
+	border-radius: .4em;
+    animation: shasha 0.7s running ease;
+    :after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 28px solid transparent;
+	border-top-color: #ffffff;
+	border-bottom: 0;
+	margin-left: -28px;
+	margin-bottom: -28px;
+    
+}
+`
+   
+
+
+
+
 
 export const AnswerBox = styled.div`
     display: flex;
