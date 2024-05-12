@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "homepage": "https://jeongho77.github.io/Quiz_ulsan/",
+  "homepage": "https://jeongho77.github.io/Quiz_ulsan/quiz",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
