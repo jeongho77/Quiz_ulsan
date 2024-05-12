@@ -203,27 +203,19 @@ export default function App() {
                     <StartLogo_Mbti>O-X 퀴즈</StartLogo_Mbti>
                     <StartLogo_1>▼</StartLogo_1>
                     <StartLogo_motion_Wrapper>
-                    <StartLogo_motion>당</StartLogo_motion>
-                    <StartLogo_motion>신</StartLogo_motion>
-                    <StartLogo_motion>은</StartLogo_motion>
-                    <StartLogo_space></StartLogo_space>
-                    <StartLogo_motion>어</StartLogo_motion>
-                    <StartLogo_motion>떤</StartLogo_motion>
-                    <StartLogo_space></StartLogo_space>
-                    <StartLogo_motion>M</StartLogo_motion>
-                    <StartLogo_motion>B</StartLogo_motion>
-                    <StartLogo_motion>T</StartLogo_motion>
-                    <StartLogo_motion>I</StartLogo_motion>
-                    <StartLogo_motion>를</StartLogo_motion>
-                    <StartLogo_space></StartLogo_space>
-                    <StartLogo_motion>가</StartLogo_motion>
-                    <StartLogo_motion>지</StartLogo_motion>
+                    <StartLogo_motion>문</StartLogo_motion>
+                    <StartLogo_motion>제</StartLogo_motion>
+                    <StartLogo_motion>풀</StartLogo_motion>
                     <StartLogo_motion>고</StartLogo_motion>
                     <StartLogo_space></StartLogo_space>
-                    <StartLogo_motion>있</StartLogo_motion>
-                    <StartLogo_motion>나</StartLogo_motion>
+                    <StartLogo_motion>상</StartLogo_motion>
+                    <StartLogo_motion>품</StartLogo_motion>
+                    <StartLogo_space></StartLogo_space>
+                    <StartLogo_motion>받</StartLogo_motion>
+                    <StartLogo_motion>아</StartLogo_motion>
+                    <StartLogo_motion>가</StartLogo_motion>
                     <StartLogo_motion>요</StartLogo_motion>
-                    <StartLogo_motion>?</StartLogo_motion>
+                    <StartLogo_motion>!</StartLogo_motion>
                     </StartLogo_motion_Wrapper>
                 </StartLogo>
                 <ImageLogo src="./spinner/a.png" alt="Logo" />

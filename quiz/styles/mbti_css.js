@@ -339,9 +339,9 @@ export const QnaWrapper = styled.div`
 
 export const ChatBox_1 = styled.div`
     color: white;
-    font-size : 50px;
+    font-size : 40px;
     margin-top: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     display: flex;
     position: relative;
     animation: shasha 0.4s running ease; // 애니메이션
@@ -371,12 +371,12 @@ export const ChatBox = styled.div`
     div:nth-child(1) {
         animation: shasha 0.7s running ease; // 애니메이
         /* 두 번째 자식 div 요소에 스타일을 적용합니다. */
-        padding : 7px 10px 7px 10px;
+        padding : 10px 30px;
         /* background-color: #FFF798; */
         margin-left : -4px;
         border-radius: 10px;
-        text-align : left;
-        font-size: 30px;
+        text-align : center;
+        font-size: 25px;
         color:white;
         width: auto;
         position: relative;
