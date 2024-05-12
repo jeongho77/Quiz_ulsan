@@ -1,9 +1,9 @@
 const debug = process.env.NODE_ENV !== "production";
-const repository = "https://jeongho77.github.io/Quiz_ulsan/";
+const repository = "https://jeongho77.github.io/Quiz_ulsan/quiz/";
 
 const nextConfig = {
   output:'export',
-  basePath: '/Quiz_ulsan',
+  basePath: '/quiz',
   assetPrefix: debug ? "" : repository,
   reactStrictMode: true,
   
