@@ -32,7 +32,7 @@ export default function App() {
             setloading(true);
             setTimeout(() => {
                 setloading(false);
-            },2000); //2초후에 꺼주기
+            },10000); //2초후에 꺼주기
         }
         if(loading == true){
             setTimeout(() => {
@@ -136,7 +136,7 @@ export default function App() {
         a:[{type:'X' , text:'O'},
            {type:'O', text:'X'}]},
 
-        {q:['대한민국의 수도는 ‘울산’이다.'],
+        {q:['대한민국의 수도는 울산이다.'],
         a:[{type:'X' , text:'O'},
            {type:'O', text:'X'}]},
            
@@ -165,7 +165,7 @@ export default function App() {
            {type:'O', text:'X'}]},
 
         {q:['고생했어! 결과를 알려줄게!' ],
-        a:[{type:'',text:'결과 보러가기!'},
+        a:[{type:'',text:'와줘서 고마워!'},
            {type:'',text:'결과 보러가기!'}]},
     ]    
 

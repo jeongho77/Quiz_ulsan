@@ -156,7 +156,7 @@ export const StartLogo_motion_spacebar = styled.div`
 `
 export const StartButton = styled.button`
     margin-top: 10px;
-    width: 300px;
+    width: 290px;
     height: 100px;
     border-radius: 50px;
     border : 5px solid yellow;
@@ -197,7 +197,7 @@ export const StartBoard = styled.div`
 
 export const ImageLogo = styled.img`
     width: 100%;
-    height: 30%;
+    height: 20%;
     object-fit: cover; /* 이 부분은 background-size: cover와 동일한 기능을 합니다. */
 `;
 
@@ -258,7 +258,7 @@ export const MbtiTitle = styled.div`
     flex-direction: row;
     width : 100%;
     align-items: center;
-    padding : 15px;
+    padding : 10px;
     box-sizing :border-box;
     font-weight : 700;
     font-size: 35px;
@@ -276,12 +276,12 @@ export const ProgressWrapper = styled.div`
 `
 
 export const ProgressBar = styled.div`
-    width: 97%;
+    width: 95%;
     height: 100%;
     background-color: #dedede;
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 65px;
+    margin-bottom: 40px;
     display: flex;
 `;
 
@@ -339,9 +339,7 @@ export const QnaWrapper = styled.div`
 
 export const ChatBox_1 = styled.div`
     color: white;
-    font-size : 40px;
-    margin-top: 8px;
-    margin-bottom: 15px;
+    font-size : 37px;
     display: flex;
     position: relative;
     animation: shasha 0.4s running ease; // 애니메이션
@@ -473,7 +471,7 @@ export const AchatBox = styled.div`
 `
 
 export const Ballon = styled.div`
-    
+    margin-top: 50px;
     width: auto;
     height: 60px;
     
@@ -483,8 +481,8 @@ export const Ballon = styled.div`
     color: rgb(75,137,220);
     border-radius: 5px;
     padding: 12px 12.8px;
-    font-size: 30px;
-
+    border: 5px solid white;
+    font-size: 25px;
     animation: shasha 1.5s running ease;
 
     :after {
@@ -503,7 +501,7 @@ export const Speech = styled.div`
 	position: relative;
 	background: #ffffff;
 	border-radius: .4em;
-    animation: shasha 0.7s running ease;
+    animation: shasha 1.5s running ease;
     :after {
 	content: '';
 	position: absolute;
@@ -529,7 +527,7 @@ export const AnswerBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 35px;
+    padding: 35px 0px;
     text-align: center;
     /* box-shadow : 2px 2px 0px #ededed; */
     margin : 0px 20px 15px 20px;
@@ -546,7 +544,7 @@ export const AnswerBox = styled.div`
         position: relative;
         display: flex;
         animation: shasha 1.2s running ease; // 애니메이션
-        background-color: rgb(177, 49, 39);
+        background-color: #4B89DC;
     }
     :nth-child(2){
 
@@ -554,7 +552,8 @@ export const AnswerBox = styled.div`
         position: relative;
         display: flex;
         animation: shasha 1.4s running ease; // 애니메이션
-        background-color: #4B89DC;
+        background-color: rgb(177, 49, 39);
+        
     }
 
     :hover {
