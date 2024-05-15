@@ -32,7 +32,7 @@ export default function App() {
             setloading(true);
             setTimeout(() => {
                 setloading(false);
-            },10000); //2초후에 꺼주기
+            },2000); //2초후에 꺼주기
         }
         if(loading == true){
             setTimeout(() => {
@@ -128,7 +128,7 @@ export default function App() {
         a:[{type:'X' , text:'O'},
            {type:'O', text:'X'}]},
 
-        {q:['IT의 약자는 Informainon Technology이다.'],
+        {q:['IT의 약자는 Information Technology이다.'],
         a:[{type:'O' , text:'O'},
            {type:'X', text:'X'}]},
            
