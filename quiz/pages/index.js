@@ -3,6 +3,7 @@ import { LoadingText,Background,Mbti_Layout,StartLogo,StartPageLayout,StartButto
 import ConfettiExplosion from "react-confetti-explosion";
 import theme from "../styles/theme";
 import spinner from '../public/spinner/spinner.gif'
+import Head from 'next/head'; // next/head 모듈 임포트
 
 export default function App() {
     
@@ -184,8 +185,12 @@ export default function App() {
 
 
     return (
-        
+         
         <Mbti_Layout>    
+             <Head>
+                <title>울청스타 OX 퀴즈</title> {/* 페이지 제목 설정 */}
+                <link rel="icon" href="./spinner/gaonlogo.png" /> {/* 아이콘 설정 */}
+            </Head>
             {loading ? (
             <Background>
                 <LoadingText>잠시만 기다려 주세요.</LoadingText>
