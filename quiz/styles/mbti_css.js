@@ -1,17 +1,21 @@
 import styled from "@emotion/styled";
 
 export const Mbti_Layout = styled.div`
-    width: 100vw;
-    max-width: 375px;
-    height: 667px;
-    font-size: 14px;
-    display: flex;
+    width : 100vw;
+    font-size : 14px;
+    display : flex;
     justify-content: center;
-    align-items: center; // 중앙 정렬을 위한 속성 추가
-    background-color: honeydew;
-    
+    background-color : honeydew;
+    height:calc(var(--vh,1vh)*100);
+
     //layout의 높이를 다양한 화면기기 뷰포트에 알맞게끔 스타일 설정하기
     //var(변수값1 ,변수값2 ) 변수값 1이없으면 2로 설정하기
+
+    @media (min-width: 1024px) {
+        width: 100vw;
+        max-width: 380px;
+        height: 677px;
+    }
 `
 
 export const LoadingText = styled.div`
@@ -23,10 +27,9 @@ export const LoadingText = styled.div`
 export const Background = styled.div`
     position: absolute;
     width: 100vw;
+    height: 100vh;
     top: 0;
     left: 0;
-    max-width: 375px;
-    height: 667px;
     
     background: skyblue;
     z-index: 999;
