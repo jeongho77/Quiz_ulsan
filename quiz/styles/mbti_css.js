@@ -14,7 +14,7 @@ export const Mbti_Layout = styled.div`
     @media (min-width: 1024px) {
         width: 100vw;
         max-width: 380px;
-        height: 677px;
+        height: 690px;
     }
 `
 
@@ -37,6 +37,12 @@ export const Background = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media (min-width: 1024px) {
+        width: 100vw;
+        max-width: 380px;
+        height: 690px;
+    }
 `
 
 
