@@ -186,7 +186,8 @@ export default function App() {
 
     return (
          
-        <Mbti_Layout>    
+        <Mbti_Layout>   
+
              <Head>
                 <title>울청스타 OX 퀴즈</title> {/* 페이지 제목 설정 */}
                 <link rel="icon" href="./spinner/gaonlogo.png" /> {/* 아이콘 설정 */}
@@ -327,9 +328,8 @@ export default function App() {
                             </ChatListLayout>
                     </QuestionList>
             </QuestionLayout>
-        }
-        </> )}           
-        
+            }
+            </> )}           
         </Mbti_Layout>
     
     );
