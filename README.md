@@ -31,8 +31,8 @@ https://jeongho77.github.io/Quiz_ulsan/index.html
 
 ## 프로젝트 홍보용 사진
 <div style="display:flex; flex-direction:row;">
-    <img width="500" alt="index" src="https://github.com/jeongho77/Quiz_ulsan/assets/115057094/44445185-875b-4a53-a5ef-837f01323f6a">
-    <img width="500" alt="index" src="https://github.com/jeongho77/Quiz_ulsan/assets/115057094/dba054c6-3e77-441a-8eec-777444cedb45">
-    <img width="500" alt="index" src="https://github.com/jeongho77/Quiz_ulsan/assets/115057094/4bad39ec-1297-4406-9893-f541a719e020">
-    <img width="500" alt="index" src="https://github.com/jeongho77/Quiz_ulsan/assets/115057094/47adde08-0cdf-4866-a759-78eee56195bf">
+    <img width="400" alt="index" src="https://github.com/jeongho77/Quiz_ulsan/assets/115057094/44445185-875b-4a53-a5ef-837f01323f6a">
+    <img width="400" alt="index" src="https://github.com/jeongho77/Quiz_ulsan/assets/115057094/dba054c6-3e77-441a-8eec-777444cedb45">
+    <img width="400" alt="index" src="https://github.com/jeongho77/Quiz_ulsan/assets/115057094/4bad39ec-1297-4406-9893-f541a719e020">
+    <img width="400" alt="index" src="https://github.com/jeongho77/Quiz_ulsan/assets/115057094/47adde08-0cdf-4866-a759-78eee56195bf">
 </div>
