@@ -9,8 +9,10 @@ export default function App() {
     
     const [isExploding, setIsExploding] = useState(true);
     const [page,setPage] = useState(0);
+
     const [mbtiList , setMbtiList] = useState([ // 카운트가 제일 늘어난걸 기준으로 MBTI를 정할거임!
-        {name:'O', count:0} , {name:'X' , count:0 } ]);
+        {name: true, count:0} , {name: false , count:0 } ]);
+
     const [mbtiContents, setMbtiContents] = useState([]);
     const [ratio, setRatio] = useState(0);
     const [pageList, setpageList] = useState(12);
@@ -40,15 +42,7 @@ export default function App() {
                 setloading(false);
             },2000);
         }
-        // setTimeout(() => {
-        //     setInterval(() => {
-        //         // 이곳에 실행할 코드 작성
-        //     }, 1000); // 1초마다 실행
-        // }, 5000); // 5초 후에 시작
-
-        // console.log("페이지: ",page);
-        // console.log("페이지리스트: ",pageList);
-
+        
         if(pageList != page && page != 0){
             if(pageList != page+1){
                 let interval;
@@ -95,18 +89,30 @@ export default function App() {
         } , [])
     
     const handleCkAnswer = (type,idx) => {
-        let ls = mbtiList; //useState에 있는 mbtiList 들고오기.
-        for(let i = 0; i < ls.length; i++){ //mbtiList 전체로 돌리기
-            if(ls[i].name===type){ 
-            //mbtiList의 name과 QuestionList의 type이 일치하면 i,e,s,n,t,f,p,j 에 1 더해주기
-                ls[i].count = ls[i].count + 1;
-            }
-        }
+
+        // let ls = mbtiList; //useState에 있는 mbtiList 들고오기.
+
+        // for(let i = 0; i < ls.length; i++){ //mbtiList 전체로 돌리기
+        //     if(ls[i].name===type){ 
+        //     //mbtiList의 name과 QuestionList의 type이 일치하면 i,e,s,n,t,f,p,j 에 1 더해주기
+        //         ls[i].count = ls[i].count + 1;
+        //     }
+        // }
+
+        var newList = mbtiList.map(item =>
+            item.name === type ? { ...item, count: item.count + 1 } : item,
+            
+        );
+
+        console.log("true : ",newList[0].count);
+        console.log("false : ",newList[1].count);
+        setMbtiList(newList);
+
         pa.current = page;
+        value.current = 0;
         setRatio(0);
         setActiveIndex(idx);
-        value.current = 0;
-        console.log("ls:",  ls[0].name,ls[0].count);
+        
         // console.log(page,questionList.length)
         if(page+1 === questionList.length){  
             setMbti();
@@ -115,7 +121,7 @@ export default function App() {
         setTimeout(() => {
             
             setActiveIndex(null);
-            setMbtiList(ls); //추가된 ls를 setmbti로 업데이트시키기
+            // setMbtiList(ls); //추가된 ls를 setmbti로 업데이트시키기
             setPage(page+1); //버튼이 클릭될때마다 페이지를 넘기는 로직! 
             
         //idx는 0부터 시작하고 객체는 1부터 시작함 페이지와 질문의 수를 맞춰야함으로 idx+1 해주기
@@ -123,47 +129,46 @@ export default function App() {
 
     }
 
-
     const questionList = [ //질문들
-        {q:['지금 체험하고 있는 부스의 이름은 "컴퓨터야 놀아볼까"이다'],
-        a:[{type:'X' , text:'O'},
-           {type:'O', text:'X'}]},
+        {q:['트랙 페스타는 4학년을 위해서 시행했다.'],
+        a:[{type:true , text:'O'},
+           {type:false, text:'X'}]},
 
         {q:['IT의 약자는 Information Technology이다.'],
-        a:[{type:'O' , text:'O'},
-           {type:'X', text:'X'}]},
+        a:[{type:true , text:'O'},
+           {type:false, text:'X'}]},
            
         {q:['1000원짜리 지폐에 계신 위인은 율곡 이황이다.'],
-        a:[{type:'X' , text:'O'},
-           {type:'O', text:'X'}]},
+        a:[{type:false , text:'O'},
+           {type:true, text:'X'}]},
 
-        {q:['대한민국의 수도는 울산이다.'],
-        a:[{type:'X' , text:'O'},
-           {type:'O', text:'X'}]},
+        {q:['대한민국의 수도는 강남이다.'],
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
            
         {q:['사흘은 4일을 의미한다.'],
-        a:[{type:'X' , text:'O'},
-           {type:'O', text:'X'}]},
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
 
         {q:['세상에서 가장 많이 쓰이는 언어는 중국어이다.'],
-        a:[{type:'X' , text:'O'},
-           {type:'O', text:'X'}]},
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
            
         {q:['줄넘기는 민속놀이이다.'],
-        a:[{type:'O' , text:'O'},
-           {type:'X', text:'X'}]},
+        a:[{type:true , text:'O'},
+           {type:false, text:'X'}]},
 
         {q:['인구가 가장 많은 국가는 중국이다.'],
-        a:[{type:'X' , text:'O'},
-           {type:'O', text:'X'}]},
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
 
         {q:['모든 혈액형에게 피를 수혈해줄수 있는 혈액형은 O형 이다.'],
-        a:[{type:'O' , text:'O'},
-           {type:'X', text:'X'}]},
+        a:[{type:true, text:'O'},
+           {type:false, text:'X'}]},
 
         {q:['북극에는 펭귄이 산다.'],
-        a:[{type:'X' , text:'O'},
-           {type:'O', text:'X'}]},
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
 
         {q:['고생했어! 결과를 알려줄게!' ],
         a:[{type:'',text:'와줘서 고마워!'},
@@ -172,9 +177,10 @@ export default function App() {
 
     function setMbti() {
    
-    const OCount = (mbtiList.find(data => data.name === 'O').count) * 10;
-    setScore(OCount);
-    console.log(score);
+        const OCount = (mbtiList.find(data => data.name === true).count) * 10;
+        setScore(OCount);
+        console.log(score);
+        console.log(mbtiList[1].count);
     }
 
     // function ChatBox_Btn_Onclick(event) {
@@ -189,7 +195,7 @@ export default function App() {
         <Mbti_Layout>   
 
              <Head>
-                <title>울청스타 OX 퀴즈</title> {/* 페이지 제목 설정 */}
+                <title>UCTL 트랙페스타 OX 퀴즈</title> {/* 페이지 제목 설정 */}
                 <link rel="icon" href="./spinner/gaonlogo.png" /> {/* 아이콘 설정 */}
             </Head>
             {loading ? (
@@ -214,21 +220,20 @@ export default function App() {
                     <StartLogo_motion>풀</StartLogo_motion>
                     <StartLogo_motion>고</StartLogo_motion>
                     <StartLogo_space></StartLogo_space>
-                    <StartLogo_motion>상</StartLogo_motion>
-                    <StartLogo_motion>품</StartLogo_motion>
+                    <StartLogo_motion>키</StartLogo_motion>
+                    <StartLogo_motion>트</StartLogo_motion>
                     <StartLogo_space></StartLogo_space>
                     <StartLogo_motion>받</StartLogo_motion>
                     <StartLogo_motion>아</StartLogo_motion>
-                    <StartLogo_motion>가</StartLogo_motion>
                     <StartLogo_motion>요</StartLogo_motion>
                     <StartLogo_motion>!</StartLogo_motion>
                     </StartLogo_motion_Wrapper>
                 </StartLogo>
-                <ImageLogo src="./spinner/a.png" alt="Logo" />
+                <ImageLogo src="./spinner/uctl.png" alt="Logo" />
                 <StartButton onClick={()=> setPage(1)}> 시작하기 </StartButton>
                 <StartBoard>
                     <Pen></Pen>
-                    <Eraser>가온누리<Eraserbg></Eraserbg></Eraser>
+                    <Eraser>트랙페스타<Eraserbg></Eraserbg></Eraser>
                 </StartBoard>
             </StartPageLayout>
 
@@ -273,16 +278,17 @@ export default function App() {
                             <AnswerItemLayout>
     
                                 {val.a.map((aval , aidx)=> 
-                                //val.a (질문리스트) 맵으로 받기!! 
-                                //a 에 요소가 3개가있으면 3번씩 실행이 됨!
-                                <AnswerBox 
-                                    key={aidx} 
-                                    isActive={activeIndex === null || activeIndex === aidx} // 클릭된 요소 또는 초기 상태인 경우에만 활성화
-                                    onClick={()=>handleCkAnswer(aval.type,aidx)} >
+                                    //val.a (질문리스트) 맵으로 받기!! 
+                                    //a 에 요소가 3개가있으면 3번씩 실행이 됨!
+                                    <AnswerBox 
+                                        key={aidx} 
+                                        // 클릭된 요소 또는 초기 상태인 경우에만 활성화
+                                        isActive={activeIndex === null || activeIndex === aidx}
+                                        onClick={()=>handleCkAnswer(aval.type,aidx)} >
 
-                                    <div>{aval.text} </div>
-                                    {/* 요소만큼 실행되기때문에 a가 2개이므로 2번 실행됨! */}
-                                </AnswerBox>
+                                        <div>{aval.text} </div>
+                                        {/* 요소만큼 실행되기때문에 a가 2개이므로 2번 실행됨! */}
+                                    </AnswerBox>
                                 )}
                             </AnswerItemLayout>
                     </QuestionList>
@@ -291,7 +297,7 @@ export default function App() {
                 </QnaWrapper>
                 <StartBoard>
                     <Pen></Pen>
-                    <Eraser>가온누리<Eraserbg></Eraserbg></Eraser>
+                    <Eraser>트랙페스타<Eraserbg></Eraserbg></Eraser>
                 </StartBoard>
             </QuestionLayout>
             : //더이상 보여줄 pageList.length 가 없기때문에 결과페이지 보여주기!            
