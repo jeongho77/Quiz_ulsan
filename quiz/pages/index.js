@@ -183,9 +183,10 @@ export default function Home() {
 
     
     return (
-         
         <Mbti_Layout>   
             <Head>
+                <meta name="theme-color" content="#1d543f" />
+                <meta name="color-scheme" content="only light" />
                 <title>UCTL 트랙페스타 OX 퀴즈</title> {/* 페이지 제목 설정 */}
                 <link rel="icon" href="./spinner/gaonlogo.png" /> {/* 아이콘 설정 */}
             </Head>
@@ -341,7 +342,6 @@ export default function Home() {
                 }
             </>  
         </Mbti_Layout>
-    
     );
     
 }
