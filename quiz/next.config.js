@@ -3,6 +3,9 @@
  */
 const nextConfig = {
     output: 'export',
+    basePath: '/Quiz_ulsan/quiz',  // <- 경로 맞게
+    assetPrefix: '/Quiz_ulsan/quiz',
+
    
     // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
     // trailingSlash: true,
