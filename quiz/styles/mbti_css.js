@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 
+
 export const Mbti_Layout = styled.div`
     width : 100vw;
     font-size : 14px;
@@ -45,10 +46,8 @@ export const Background = styled.div`
     }
 `
 
-
-
 export const StartPageLayout = styled.div`
-    display:flex;
+    display: ${(props) => (props.activate ? 'flex' : 'none')};
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -201,10 +200,9 @@ export const StartBoard = styled.div`
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    height:100%;
     width:100%;
     align-items: flex-end;
-    
+    margin-top: auto; // 핵심!
 `
 
 export const ImageLogo = styled.img`
@@ -226,6 +224,51 @@ export const Pen = styled.div`
     position: relative;
     width:50px;
     height:1px;
+`
+
+export const LevelSelectLayout = styled.div`
+    width : 100%;
+    height: 100%;
+    background-color: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    justify-content: flex-start;
+    gap : 50px;
+`
+
+export const LevelBox1 = styled.button`
+    width: 110%;
+    height: 150px;
+    background-color: ${(props) => (props.activate ? 'rgb(170, 58, 50)' : 'rgb(123, 82, 218)')};
+    border-radius: 20px;
+    display: flex;
+    align-items: center;     // 수직 가운데
+    justify-content: center; // 수평 가운데
+    font-family: gaegu-bold, gaegu-light, sans-serif;
+    
+
+    cursor : pointer;
+    outline: none;        
+    box-shadow: none;     
+`
+
+export const LevelInfo = styled.button`
+    width: 90%;
+    height: 40px;
+    font-size: 22px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;     // 수직 가운데
+    justify-content: center; // 수평 가운데
+    font-family: gaegu-bold, gaegu-light, sans-serif;
+`
+
+export const LevelBoxP = styled.p`
+    font-size: 30px;
+    color: white;
 `
 
 export const Eraser = styled.div`
@@ -255,9 +298,9 @@ export const Eraserbg = styled.div`
 
 
 export const QuestionLayout = styled.div`
-    display:flex;
+    display:${(props) => (props.active ? 'flex' : 'none')};
     flex-direction: column;
-    border: 10px solid rgb(133, 77, 60);
+    border: ${(props) => (props.active ? '10px solid rgb(133, 77, 60)' : 'none')};
     background-color: rgb(29,84,63);
     width : 100%;
     max-width: 900px;
@@ -308,6 +351,7 @@ export const Progress = styled.div`
 `;
 
 export const QuestionList = styled.div`
+    margin-top: 20px;
     flex-direction: column;
     overflow : scroll;
     scrollbar-width : none;
@@ -496,17 +540,7 @@ export const Ballon = styled.div`
     border: 5px solid white;
     font-size: 25px;
     animation: shasha 1.5s running ease;
-
-    :after {
-        border-top: 10px solid #484848;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-bottom: 0px solid transparent;
-        content: "";
-        position: absolute;
-        top: 40px;
-        left: 160px;
-    }
+    margin-top: 25px;
 ` 
 
 export const Speech = styled.div`
