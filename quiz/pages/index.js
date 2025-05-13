@@ -10,13 +10,13 @@ export default function Home() {
     const [isExploding, setIsExploding] = useState(true);
     const [page,setPage] = useState(0);
     const [levelPage, setLevelPage] = useState(0);
-    
+    const [sourceType, setSourceType] = useState(''); // 'mentor' or 'track'
     const [mbtiList , setMbtiList] = useState([ // 카운트가 제일 늘어난걸 기준으로 MBTI를 정할거임!
         {name: true, count:0} , {name: false , count:0 } ]);
-
+    
+    const [questionList, setQuestionList] = useState([]) ;
     const [mbtiContents, setMbtiContents] = useState([]);
     const [ratio, setRatio] = useState(0);
-    const [pageList, setpageList] = useState(12);
     const [activeIndex, setActiveIndex] = useState(null);
     const [loading, setloading] = useState(true);
     const [score, setScore] = useState(0);
@@ -32,7 +32,7 @@ export default function Home() {
         console.log(pa.current, page);
         value.current = 0;
         //시작 페이지시 로딩창키기
-        if(page == pageList){ 
+        if(page == questionList.length+1){ 
             setloading(true);
             setTimeout(() => {
                 setloading(false);
@@ -44,35 +44,33 @@ export default function Home() {
             },2000);
         }
         
-        if(pageList != page && page != 0){
-            if(pageList != page+1){
-                let interval;
-                setRatio(0);
+        if(questionList.length+1 != page && page != 0){
+            let interval;
+            setRatio(0);
                 
-                interval = setInterval(() => {
-                    if (page == pa.current+1){    
-                        //비동기적이라 콘솔이 출력이 안되는거같음.
-                        // 0.3 , 33초 걸림
-                        // console.log(value.current , "page : ", page);
-                        value.current = value.current + 0.3;
-                        setRatio(value.current);
+            interval = setInterval(() => {
+                if (page == pa.current+1){    
+                    //비동기적이라 콘솔이 출력이 안되는거같음.
+                    // 0.3 , 33초 걸림
+                    // console.log(value.current , "page : ", page);
+                    value.current = value.current + 0.3;
+                    setRatio(value.current);
                         
-                        if(value.current > 103){
-                            setPage(page+1);
-                            pa.current = page;
-                            value.current = 0;
-                            clearInterval(interval);
-                        }
+                    if(value.current > 103){
+                        setPage(page+1);
+                        pa.current = page;
+                        value.current = 0;
+                        clearInterval(interval);
+                    }
                     }else{
                         clearInterval(interval);
                     }
                 }, 100); // 1초마다 실행
-            }
         }
-        if(page == pageList-1){
+        if(page == questionList.length+1){
             setRatio(100);
         }
-    }, [page, pageList, levelPage] );
+    }, [page , levelPage, mbtiList] );
 
     const setVh = () => {
         const vh = window.innerHeight * 0.01; 
@@ -95,6 +93,7 @@ export default function Home() {
             item.name === type ? { ...item, count: item.count + 1 } : item,
             
         );
+        console.log("정답 카운트 : ", newList[0].count)
 
         setMbtiList(newList);
         pa.current = page;
@@ -106,8 +105,9 @@ export default function Home() {
         
         // console.log(page,questionList.length)
         if(page+1 === questionList.length){  
-            console.log('끝');
-            setMbti();
+            let point = sourceType === 'mentor' ? 5 : 10;
+            const OCount = (newList.find(data => data.name === true).count) * point;
+            setScore(OCount);
         }
 
         setTimeout(() => {
@@ -121,10 +121,11 @@ export default function Home() {
 
     }
 
-    const questionList = [ //질문들
+    //트랙 페스타 질문
+    const trackQuestionList = [ 
         {q:['트랙 페스타는 4학년을 위해서 시행했다.'],
-        a:[{type:true , text:'O'},
-           {type:false, text:'X'}]},
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
 
         {q:['사흘은 4일을 의미한다.'],
         a:[{type:false, text:'O'},
@@ -138,15 +139,15 @@ export default function Home() {
         a:[{type:false, text:'O'},
            {type:true, text:'X'}]},
            
-        {q:['UCTL은 교수학습개발센터이다.'],
-        a:[{type:true , text:'O'},
-           {type:false, text:'X'}]},
+        {q:['UCTL은 학생학습개발센터이다.'],
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
 
         {q:['세상에서 가장 많이 쓰이는 언어는 중국어이다.'],
         a:[{type:false, text:'O'},
            {type:true, text:'X'}]},
            
-        {q:['줄넘기는 민속놀이이다.'],
+        {q:['줄넘기는 우리나라의 민속놀이이다.'],
         a:[{type:true , text:'O'},
            {type:false, text:'X'}]},
 
@@ -163,17 +164,97 @@ export default function Home() {
            {type:true, text:'X'}]},
 
         {q:['고생했어! 결과를 알려줄게!' ],
-        a:[{type:'',text:'와줘서 고마워!'},
-           {type:'',text:'결과 보러가기!'}]},
+        a:[{type:'none',text:'와줘서 고마워!'},
+           {type:'none',text:'결과 보러가기!'}]},
     ]    
 
-    function setMbti() {
-        // setLevelPage(2);
-        const OCount = (mbtiList.find(data => data.name === true).count) * 10;
-        setScore(OCount);
-        console.log(score);
-        console.log(mbtiList[1].count);
-    }
+    //톡톡멘토단 질문
+    const majorQuestionList = [ 
+
+        {q:['패션의류학과 학생들은 시험 대신 패션쇼를 연다.'],
+        a:[{type:false, text:'O'},
+            {type:true, text:'X'}]},
+
+        {q:['IT학과의 IT는 Information Television의 약자이다.'],
+        a:[{type:false , text:'O'},
+           {type:true, text:'X'}]},
+
+        {q:['주거환경학과(현 실내건축학)에서 3D그래픽스를 전공으로 배운다.'],
+        a:[{type:false , text:'O'},
+           {type:true, text:'X'}]},
+
+        {q:['국어국문학부는 외국인 유학생들이 전공하는 한국어 문학 전공이 있다'],
+        a:[{type:true , text:'O'},
+           {type:false, text:'X'}]},
+
+        {q:['전기컴퓨터공학관(7호관)에는 지하벙커가 있으며, 독서실로 쓰이고 있다.'],
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
+
+        {q:['간호학과는 병원 뿐만 아니라 보건소 등에서도 실습을 한다.'],
+        a:[{type:true, text:'O'},
+           {type:false, text:'X'}]},
+           
+        {q:['산업경영공학부는 사람, 자재, 에너지등 시스템을 효율적으로 설계하고 운영하는것을 목표로 한다.'],
+        a:[{type:true , text:'O'},
+           {type:false, text:'X'}]},
+
+        {q:['철학과 수업에서는 “내가 누구인가?”를 한 학기 내내 고민한다.'],
+        a:[{type:true, text:'O'},
+           {type:false, text:'X'}]},
+
+        {q:['화학공학부는 계단식 강의실이 있다'],
+        a:[{type:true, text:'O'},
+           {type:false, text:'X'}]},
+           
+        {q:['첨단소재공학부는 다양한 분야로 취업이 가능하다.'],
+        a:[{type:true , text:'O'},
+           {type:false, text:'X'}]},
+
+        {q:['식품영양학과는 학기마다 요리대회를 열고 우승하면 진짜 식당을 차릴 수 있다.'],
+        a:[{type:false, text:'O'},
+            {type:true, text:'X'}]},
+            
+        {q:['경영학부 시험은 진짜 회사 운영하듯이 조별과제로만 진행된다.'],
+        a:[{type:false, text:'O'},
+            {type:true, text:'X'}]},
+
+        {q:['아동가정복지학과에서는 아동학, 가정복지학, 소비자학을 배운다.'],
+        a:[{type:true, text:'O'},
+           {type:false, text:'X'}]},
+
+        {q:['건축관은 벚꽃피는 막동시즌에 학우들을 위해 화장실을 개방해준다.'],
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
+
+        {q:['회계학과는 숫자로 기업을 들여다보는 법을 배운다.'],
+        a:[{type:true, text:'O'},
+           {type:false, text:'X'}]},
+
+        {q:['시각디자인과 수업 들어가기 전에 문 손잡이에 맥북을 가져다두면 문이 열린다.'],
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
+
+        {q:['해양학과는 모든 수업이 수영장에서 진행된다.'],
+        a:[{type:false, text:'O'},
+            {type:true, text:'X'}]},
+
+        {q:['첨단소재공학부는 무거동에서만 수업을 듣는다.'],
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
+
+        {q:['국제관계학과에는 외국인 교수님 3분이 계신다.'],
+        a:[{type:false, text:'O'},
+           {type:true, text:'X'}]},
+           
+        {q:['산업공학의 아버지이자, 과학적 관리법을 창시한 사람은 프레드릭 테일러이다'],
+        a:[{type:true, text:'O'},
+           {type:false, text:'X'}]},
+
+        {q:['고생했어! 결과를 알려줄게!' ],
+        a:[{type:'none',text:'와줘서 고마워!'},
+           {type:'none',text:'결과 보러가기!'}]},
+    ]    
 
     // function ChatBox_Btn_Onclick(event) {
        
@@ -231,11 +312,11 @@ export default function Home() {
                         <LevelInfo>
                             문제를 선택해주세요!
                         </LevelInfo>
-                        <LevelBox1 activate={true} onClick={()=>[setPage(1), setLevelPage(3)]}>
-                            <LevelBoxP>트랙페스타 문제</LevelBoxP>
+                        <LevelBox1 activate={true} onClick={()=>[setPage(1), setLevelPage(3), setSourceType('track') , setQuestionList(trackQuestionList)]}>
+                            <LevelBoxP>트랙페스타 & 상식 문제</LevelBoxP>
                         </LevelBox1>
-                        <LevelBox1 activate={false} onClick={()=>[setPage(256), setLevelPage(3)]}>
-                            <LevelBoxP>톡톡멘토단 문제</LevelBoxP>
+                        <LevelBox1 activate={false} onClick={()=>[setPage(1), setLevelPage(3), setSourceType('mentor') , setQuestionList(majorQuestionList)]}>
+                            <LevelBoxP>톡톡멘토단이 낸 문제</LevelBoxP>
                         </LevelBox1>
                     </LevelSelectLayout>
                 )}
@@ -249,8 +330,8 @@ export default function Home() {
 
                     <QuestionLayout active={page >= 1}>
                         <MbtiTitle>
-                            <MbtiTitle1>OX 퀴즈</MbtiTitle1>
-                            <div>{`${page} / ${questionList.length}`}</div> 
+                            <MbtiTitle1>{sourceType === 'mentor' ? '멘토단 퀴즈' : '트랙페스타 퀴즈'}</MbtiTitle1>
+                            <div>{`${page===questionList.length ? questionList.length-1 : page}  / ${questionList.length-1}`}</div> 
                             {/* 현재 페이지 / 전체 페이지 */}
                         </MbtiTitle>
                         
@@ -270,7 +351,7 @@ export default function Home() {
                                     </ProfileImg> */}
                                     <ChatListLayout>
                                     {/* <ChatBox_Btn onClick={ChatBox_Btn_Onclick}>버튼을 눌려줘!</ChatBox_Btn> */}
-                                    <ChatBox_1>{idx+1}번</ChatBox_1>
+                                    <ChatBox_1>{idx+1 === questionList.length ? '' : `${idx+1}번`}</ChatBox_1>
                                     {val.q.map((qval, qidx) => 
                                             <ChatBox key={qidx} >
                                                 {/* <div>◀</div>  */}

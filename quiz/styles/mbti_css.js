@@ -267,7 +267,7 @@ export const LevelInfo = styled.button`
 `
 
 export const LevelBoxP = styled.p`
-    font-size: 30px;
+    font-size: 26px;
     color: white;
 `
 
