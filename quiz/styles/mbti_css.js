@@ -377,7 +377,6 @@ export const QnaWrapper = styled.div`
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 30px;
 
     animation: answer 1s running ease;
     @keyframes answer {
@@ -425,7 +424,7 @@ export const ChatBox = styled.div`
     div:nth-child(1) {
         animation: shasha 0.7s running ease; // 애니메이
         /* 두 번째 자식 div 요소에 스타일을 적용합니다. */
-        padding : 10px 30px;
+        padding : 10px 10px;
         /* background-color: #FFF798; */
         margin-left : -4px;
         border-radius: 10px;
@@ -576,7 +575,7 @@ export const AnswerBox = styled.div`
     padding: 35px 0px;
     text-align: center;
     /* box-shadow : 2px 2px 0px #ededed; */
-    margin : 0px 20px 15px 20px;
+    margin : 0px 20px 0px 20px;
     border-radius: 15px;
     font-size : 20px;
     /* background-color: #F4E3B7; */

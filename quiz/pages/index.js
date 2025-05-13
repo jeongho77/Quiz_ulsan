@@ -53,8 +53,10 @@ export default function Home() {
                     //비동기적이라 콘솔이 출력이 안되는거같음.
                     // 0.3 , 33초 걸림
                     // console.log(value.current , "page : ", page);
-                    value.current = value.current + 0.3;
-                    setRatio(value.current);
+
+                    
+                    // value.current = value.current + 0.3;
+                    // setRatio(value.current);
                         
                     if(value.current > 103){
                         setPage(page+1);
