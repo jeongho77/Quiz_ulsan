@@ -8,7 +8,7 @@
 * 다양한 청소년들이 오는 만큼 난이도는 낮게 설정하였습니다.
  
 ## 이 프로젝트는 모바일 전용 환경에 맞게 구성하였습니다.
-https://jeongho77.github.io/Quiz_ulsan/index.html
+https://jeongho77.github.io/Quiz_ulsan/quiz/index.html
 <br>
 
 ## 팀원 구성
